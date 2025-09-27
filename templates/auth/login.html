@@ -1,20 +1,38 @@
-{% extends 'base.html' %}
+# LOGIN
+{% extends "base.html" %}
+
 {% block content %}
-<div class="container mt-4">
-    <h2 class="text-center">Iniciar Sesión</h2>
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <div class="mb-3">
-            {{ form.username.label(class="form-label") }}
-            {{ form.username(class="form-control") }}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4><i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            {{ form.username.label(class="form-label fw-bold") }}
+                            {{ form.username(class="form-control", placeholder="Ingresa tu usuario") }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.password.label(class="form-label fw-bold") }}
+                            {{ form.password(class="form-control", placeholder="Ingresa tu contraseña") }}
+                        </div>
+
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary btn-block") }}
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small>¿No tienes cuenta? <a href="{{ url_for('register') }}">Regístrate aquí</a></small>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            {{ form.password.label(class="form-label") }}
-            {{ form.password(class="form-control") }}
-        </div>
-        <div class="mb-3 text-center">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
+    </div>
 </div>
 {% endblock %}

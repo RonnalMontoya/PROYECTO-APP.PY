@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 col-md-6">
+    <h2 class="text-success">
+        {% if modo == 'crear' %}➕ Nueva Bebida{% else %}✏️ Editar Bebida{% endif %}
+    </h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" value="{{ bebida.nombre if modo == 'editar' else '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tamaño</label>
+            <input type="text" class="form-control" name="tamaño" value="{{ bebida.tamaño if modo == 'editar' else '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input type="number" step="0.01" class="form-control" name="precio" value="{{ bebida.precio if modo == 'editar' else '' }}" required>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{{ url_for('listar_bebidas') }}" class="btn btn-secondary">Volver</a>
+    </form>
+</div>
+{% endblock %}

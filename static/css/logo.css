@@ -1,0 +1,51 @@
+/* Fondo general */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fff8e1; /* color cálido como pan horneado */
+    margin: 0;
+    font-family: "Arial", sans-serif;
+}
+
+/* Contenedor central */
+.logo-container {
+    text-align: center;
+    position: relative;
+}
+
+/* Texto del logo */
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d35400; /* tono pan */
+    animation: bounce 2s infinite;
+}
+
+/* Vapor animado */
+.steam {
+    position: absolute;
+    left: 50%;
+    font-size: 2rem;
+    color: #aaa;
+    opacity: 0;
+    animation: rise 3s infinite;
+}
+
+.steam1 { top: -40px; animation-delay: 0s; }
+.steam2 { top: -60px; animation-delay: 1s; }
+.steam3 { top: -80px; animation-delay: 2s; }
+
+/* Animación del pan (rebote) */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Animación del vapor */
+@keyframes rise {
+    0% { opacity: 0; transform: translateY(0) scale(1); }
+    50% { opacity: 1; transform: translateY(-30px) scale(1.2); }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.5); }
+}

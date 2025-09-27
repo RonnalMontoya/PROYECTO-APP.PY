@@ -15,13 +15,12 @@ class ProductoForm(FlaskForm):
 
 
 # ------------------------------
-# Formulario de login
+# Formulario de inicio de sesión
 # ------------------------------
 class LoginForm(FlaskForm):
-    username = StringField("Usuario", validators=[DataRequired(), Length(min=3, max=50)])
+    username = StringField("Usuario", validators=[DataRequired()])
     password = PasswordField("Contraseña", validators=[DataRequired()])
     submit = SubmitField("Iniciar Sesión")
-
 
 # ------------------------------
 # Formulario de registro

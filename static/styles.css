@@ -93,3 +93,42 @@ footer {
 footer .fw-bold {
     color: #ffc107;
 }
+
+/* ===========================
+   Animación dinámica imágenes
+   =========================== */
+.card-img-top {
+    transition: all 0.4s ease-in-out !important;
+    border-radius: 10px;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+    z-index: 5;
+    position: relative;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Scroll horizontal si la tabla es muy ancha */
+}
+
+.table {
+    table-layout: auto;    /* Ajuste automático de columnas */
+    width: 100%;           /* Siempre ocupar todo el espacio disponible */
+    word-wrap: break-word; /* Permite cortar texto largo */
+    white-space: normal;   /* Permite salto de línea en celdas */
+}
+
+/* Forzar que la página nunca se salga del ancho */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Hacer todo el contenido adaptable */
+.container, .container-fluid {
+    max-width: 100%;
+    overflow-x: auto;
+}

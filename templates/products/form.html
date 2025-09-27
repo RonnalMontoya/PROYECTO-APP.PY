@@ -1,35 +1,57 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h1 class="mb-4">{{ "➕ Nuevo Producto" if modo=="crear" else "✏ Editar Producto" }}</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4 class="mb-0">
+                        {% if modo == 'crear' %}
+                            ➕ Nuevo Producto
+                        {% else %}
+                            ✏️ Editar Producto
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre"
+                                   value="{{ producto.nombre if modo == 'editar' else '' }}" required>
+                        </div>
 
-<form method="POST">
-    {{ form.hidden_tag() }}
+                        <!-- Cantidad -->
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="cantidad" name="cantidad"
+                                   value="{{ producto.cantidad if modo == 'editar' else '' }}" required>
+                        </div>
 
-    <div class="mb-3">
-        {{ form.nombre.label(class="form-label") }}
-        {{ form.nombre(class="form-control", placeholder="Ej: Pan integral") }}
-        {% for error in form.nombre.errors %}
-            <div class="text-danger">{{ error }}</div>
-        {% endfor %}
+                        <!-- Precio -->
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio</label>
+                            <input type="number" step="0.01" class="form-control" id="precio" name="precio"
+                                   value="{{ producto.precio if modo == 'editar' else '' }}" required>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('listar_productos') }}" class="btn btn-secondary">⬅ Volver</a>
+                            <button type="submit" class="btn btn-success">
+                                {% if modo == 'crear' %}
+                                    Guardar
+                                {% else %}
+                                    Actualizar
+                                {% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="mb-3">
-        {{ form.cantidad.label(class="form-label") }}
-        {{ form.cantidad(class="form-control", placeholder="Ej: 10") }}
-        {% for error in form.cantidad.errors %}
-            <div class="text-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-
-    <div class="mb-3">
-        {{ form.precio.label(class="form-label") }}
-        {{ form.precio(class="form-control", placeholder="Ej: 2.50") }}
-        {% for error in form.precio.errors %}
-            <div class="text-danger">{{ error }}</div>
-        {% endfor %}
-    </div>
-
-    <button type="submit" class="btn btn-success">{{ "Guardar" if modo=="crear" else "Actualizar" }}</button>
-    <a href="{{ url_for('listar_productos') }}" class="btn btn-secondary">Volver</a>
-</form>
+</div>
 {% endblock %}
