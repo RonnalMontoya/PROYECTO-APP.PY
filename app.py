@@ -1,7 +1,7 @@
 # app.py
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from conexion.conexion import db   # ✅ seguimos usando db
+from conexion.conexion import db 
 from forms import ProductoForm, LoginForm, RegisterForm
 from models import Usuario, Producto, Bebida, Cliente
 from datetime import datetime

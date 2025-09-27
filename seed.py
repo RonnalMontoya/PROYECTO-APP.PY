@@ -35,4 +35,4 @@ productos = [
 for p in productos:
     inventario.añadir_producto(p)
 
-print("✅ Base de datos reseteada y 20 productos añadidos.")
+print("Base de datos actualizada.")
